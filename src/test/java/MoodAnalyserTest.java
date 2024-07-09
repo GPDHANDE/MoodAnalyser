@@ -8,16 +8,16 @@ public class MoodAnalyserTest
 	@Test
     public void result1()
     {
-        MoodAnalyzer mood1 = new MoodAnalyzer();
-        String result = mood1.analyseMood("I am in sad mood");
+        MoodAnalyzer mood1 = new MoodAnalyzer("I am in sad mood");
+        String result = mood1.analyseMood();
         Assert.assertEquals("SAD", result);
     }
 	
     @Test
     public void result2()
     {
-        MoodAnalyzer mood1 = new MoodAnalyzer();
-        String result = mood1.analyseMood("I am in happy mood");
+        MoodAnalyzer mood1 = new MoodAnalyzer("I am in happy mood");
+        String result = mood1.analyseMood();
         Assert.assertEquals("HAPPY", result);
     }
     
