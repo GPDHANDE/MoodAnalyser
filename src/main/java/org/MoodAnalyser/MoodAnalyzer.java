@@ -4,6 +4,10 @@ public class MoodAnalyzer
 {
 	String message;
 	
+	enum Mood{
+        HAPPY, SAD
+    }
+	
 	public MoodAnalyzer()
 	{
 		
@@ -16,26 +20,37 @@ public class MoodAnalyzer
 	
 	public String analyseMood() 
 	{
+		String result = "";
 		try
 		{
 			message = message.toLowerCase();
+			if(message.equals(""))
+			{
+                throw new MoodAnalysisException("EMPTY MOOD");
+            }
 	        if(message.contains("sad"))
 	        {
-	            return "SAD";
+	            result= "SAD";
 	        }
 	        else if(message.contains("happy"))
 	        {
-	            return "HAPPY";
+	            result = "HAPPY";
 	        }
 	        else
 	        {
-	            return "";
+	            result= "";
 	        }
 		}
-		catch(NullPointerException e)
+		catch(MoodAnalysisException e)
 		{
-			return "HAPPY";
+			 result = e.getMessage();
 		}
+		catch(NullPointerException f)
+		{
+			result = "NULL";
+		}
+		return result;
+		
 		
     }
 	
